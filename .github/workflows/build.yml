@@ -1,21 +1,22 @@
-name: Build
-on: [push, pull_request]
+name: Build Android App
+
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  # Build job. Builds app for Android with Buildozer
   build-android:
-    name: Build for Android
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v3
 
       - name: Build with Buildozer
         uses: ArtemSBulgakov/buildozer-action@v1
         id: buildozer
         with:
-          workdir: test_app
+          workdir: test_app #Укажите путь до buildozer.spec
           buildozer_version: stable
 
       - name: Upload artifacts
