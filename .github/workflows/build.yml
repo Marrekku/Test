@@ -16,9 +16,11 @@ jobs:
         uses: ArtemSBulgakov/buildozer-action@v1
         id: buildozer
         with:
-          workdir: . # Укажите путь до buildozer.spec
-          buildozer_version: stable
-
+          workdir: .  # Укажите путь до buildozer.spec
+          buildozer_version: master # Попробуйте master или другую версию
+      env:
+        APP_ANDROID_ARCH: armeabi-v7a # Попробуйте указать архитектуру
+    
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
